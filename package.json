@@ -2,7 +2,7 @@
   "name": "variableConversion",
   "displayName": "转换变量名",
   "description": "将驼峰变量转换成下划线常量,也可以将下划线常量转成驼峰",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "liubailin",
   "engines": {
     "vscode": "^1.75.0"
@@ -11,7 +11,10 @@
     "name": "liubailin",
     "email": "445133808@qq.com"
   },
-  "icon": "icon/icon.png",
+  "icon": "images/icon.png",
+  "repository": {
+    "url": "https://github.com/lovebailin/variableConversion.git"
+  },
   "keywords": [
     "变量名",
     "驼峰",
