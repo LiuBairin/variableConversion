@@ -1,0 +1,77 @@
+{
+  "name": "variableConversion",
+  "displayName": "转换变量名",
+  "description": "将驼峰变量转换成下划线常量,也可以将下划线常量转成驼峰",
+  "version": "0.0.1",
+  "publisher": "liubailin",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "author": {
+    "name": "liubailin",
+    "email": "445133808@qq.com"
+  },
+  "icon": "icon/icon.png",
+  "keywords": [
+    "变量名",
+    "驼峰",
+    "常量"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "variableConversion.constantTurnHump",
+        "title": "常量转驼峰"
+      },
+      {
+        "command": "variableConversion.humpRotationConstant",
+        "title": "驼峰转常量"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "variableConversion.humpRotationConstant",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "variableConversion.constantTurnHump",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@types/glob": "^8.0.1",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.33.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.4",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "@vscode/test-electron": "^2.2.2"
+  }
+}
