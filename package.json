@@ -2,7 +2,7 @@
   "name": "variableConversion",
   "displayName": "转换变量名",
   "description": "将驼峰变量转换成下划线常量,也可以将下划线常量转成驼峰",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "liubailin",
   "engines": {
     "vscode": "^1.75.0"
@@ -19,6 +19,10 @@
     "变量名",
     "驼峰",
     "常量"
+  ],
+  "activationEvents": [
+    "onCommand:variableConversion.constantTurnHump",
+    "onCommand:variableConversion.humpRotationConstant"
   ],
   "categories": [
     "Other"

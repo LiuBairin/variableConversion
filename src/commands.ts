@@ -1,44 +1,48 @@
 import * as vscode from 'vscode'
 import { converter } from './utils'
-
-function getSelection() {
-  const activeTextEditor = vscode.window.activeTextEditor
-
-  if (!activeTextEditor) return
-
-  const selection = activeTextEditor?.selection
-
-  const selectText = activeTextEditor?.document.getText(selection)
-
-  return { activeTextEditor, selection, selectText }
+import { TranslateType } from './types'
+interface IEditor {
+  activeTextEditor: vscode.TextEditor
+  selection: vscode.Selection
+  selectText: string
 }
 
-const humpRotationConstant = vscode.commands.registerCommand(
-  'variableConversion.humpRotationConstant',
-  () => {
-    const params = getSelection()
-    if (params) {
-      const { activeTextEditor, selection, selectText } = params
+function getSelection(): Promise<IEditor> {
+  return new Promise((resolve, reject) => {
+    const activeTextEditor = vscode.window.activeTextEditor
 
-      activeTextEditor.edit(editBuilder =>
-        editBuilder.replace(selection, converter('CONST', selectText))
-      )
+    if (!activeTextEditor) {
+      reject()
+      return
     }
-  }
-)
+    const selection = activeTextEditor.selection
 
-const constantTurnHump = vscode.commands.registerCommand(
+    const selectText = activeTextEditor.document.getText(selection)
+
+    resolve({ activeTextEditor, selection, selectText })
+  })
+}
+
+function registerCommand(command: string, type: TranslateType) {
+  return vscode.commands.registerCommand(command, async () => {
+    try {
+      const { activeTextEditor, selection, selectText } = await getSelection()
+      activeTextEditor.edit(editBuilder =>
+        editBuilder.replace(selection, converter(type, selectText))
+      )
+    } catch (error) {
+      vscode.window.showWarningMessage('Error' + error)
+    }
+  })
+}
+
+const constantTurnHump = registerCommand(
   'variableConversion.constantTurnHump',
-  () => {
-    const params = getSelection()
-    if (params) {
-      const { activeTextEditor, selection, selectText } = params
-
-      activeTextEditor.edit(editBuilder =>
-        editBuilder.replace(selection, converter('HUMP', selectText))
-      )
-    }
-  }
+  'HUMP'
+)
+const humpRotationConstant = registerCommand(
+  'variableConversion.humpRotationConstant',
+  'CONST'
 )
 
 export default [humpRotationConstant, constantTurnHump]

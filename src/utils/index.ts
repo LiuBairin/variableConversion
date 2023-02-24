@@ -1,5 +1,7 @@
 import { translateMap } from './translater'
 
-export function converter(type: keyof typeof translateMap, str: string) {
+import { TranslateType } from '../types'
+
+export function converter(type: TranslateType, str: string) {
   return translateMap[type](str)
 }
