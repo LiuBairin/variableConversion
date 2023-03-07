@@ -2,7 +2,7 @@
   "name": "variableConversion",
   "displayName": "transformHelper",
   "description": "可以快速的帮助你完成单词转常量转驼峰操作",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "liubailin",
   "engines": {
     "vscode": "^1.75.0"
@@ -52,16 +52,18 @@
           "group": "1_transformHelper"
         }
       ],
-      "transformHelper":[ {
-        "command": "variableConversion.humpRotationConstant",
-        "group": "navigation",
-        "when": "editorHasSelection"
-      },
-      {
-        "command": "variableConversion.constantTurnHump",
-        "group": "navigation",
-        "when": "editorHasSelection"
-      }]
+      "transformHelper": [
+        {
+          "command": "variableConversion.humpRotationConstant",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "variableConversion.constantTurnHump",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        }
+      ]
     }
   },
   "scripts": {
