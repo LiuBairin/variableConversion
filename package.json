@@ -1,6 +1,6 @@
 {
   "name": "variableConversion",
-  "displayName": "transfomHelper",
+  "displayName": "transformHelper",
   "description": "可以快速的帮助你完成单词转常量转驼峰操作",
   "version": "0.0.4",
   "publisher": "liubailin",
@@ -39,19 +39,29 @@
         "title": "驼峰转常量"
       }
     ],
+    "submenus": [
+      {
+        "id": "transformHelper",
+        "label": "transformHelper"
+      }
+    ],
     "menus": {
       "editor/context": [
         {
-          "command": "variableConversion.humpRotationConstant",
-          "group": "navigation",
-          "when": "editorHasSelection"
-        },
-        {
-          "command": "variableConversion.constantTurnHump",
-          "group": "navigation",
-          "when": "editorHasSelection"
+          "submenu": "transformHelper",
+          "group": "1_transformHelper"
         }
-      ]
+      ],
+      "transformHelper":[ {
+        "command": "variableConversion.humpRotationConstant",
+        "group": "navigation",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "variableConversion.constantTurnHump",
+        "group": "navigation",
+        "when": "editorHasSelection"
+      }]
     }
   },
   "scripts": {
