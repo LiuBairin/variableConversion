@@ -2,7 +2,7 @@
   "name": "variableConversion",
   "displayName": "transformHelper",
   "description": "可以快速的帮助你完成单词转常量转驼峰操作",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "liubailin",
   "engines": {
     "vscode": "^1.75.0"
