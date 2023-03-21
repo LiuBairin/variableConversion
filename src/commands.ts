@@ -38,11 +38,26 @@ function registerCommand(command: string, type: TranslateType) {
 
 const constantTurnHump = registerCommand(
   'variableConversion.constantTurnHump',
-  'HUMP'
+  'CONST2HUMP'
 )
 const humpRotationConstant = registerCommand(
   'variableConversion.humpRotationConstant',
-  'CONST'
+  'HUMP2CONST'
 )
 
-export default [humpRotationConstant, constantTurnHump]
+const humpTransconnector = registerCommand(
+  'variableConversion.humpTransconnector',
+  'HUMP2CONNECTOR'
+)
+
+const connectorTurnHump = registerCommand(
+  'variableConversion.connectorTurnHump',
+  'CONNECTOR2HUMP'
+)
+
+export default [
+  humpRotationConstant,
+  constantTurnHump,
+  humpTransconnector,
+  connectorTurnHump,
+]

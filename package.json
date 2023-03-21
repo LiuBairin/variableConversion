@@ -2,7 +2,7 @@
   "name": "variableConversion",
   "displayName": "transformHelper",
   "description": "可以快速的帮助你完成单词转常量转驼峰操作",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "liubailin",
   "engines": {
     "vscode": "^1.75.0"
@@ -22,7 +22,9 @@
   ],
   "activationEvents": [
     "onCommand:variableConversion.constantTurnHump",
-    "onCommand:variableConversion.humpRotationConstant"
+    "onCommand:variableConversion.humpRotationConstant",
+    "onCommand:variableConversion.humpTransconnector",
+    "onCommand:variableConversion.connectorTurnHump"
   ],
   "categories": [
     "Other"
@@ -37,6 +39,14 @@
       {
         "command": "variableConversion.humpRotationConstant",
         "title": "驼峰转常量"
+      },
+      {
+        "command": "variableConversion.humpTransconnector",
+        "title": "驼峰转连接符"
+      },
+      {
+        "command": "variableConversion.connectorTurnHump",
+        "title": "连接符转驼峰"
       }
     ],
     "submenus": [
@@ -60,6 +70,16 @@
         },
         {
           "command": "variableConversion.constantTurnHump",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "variableConversion.humpTransconnector",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "variableConversion.connectorTurnHump",
           "group": "navigation",
           "when": "editorHasSelection"
         }
